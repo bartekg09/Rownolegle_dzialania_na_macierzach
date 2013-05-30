@@ -52,4 +52,10 @@ void print (matrix_t a, FILE * p);
 
 wymiary_t read_wymiary (FILE * f);
 
+double * get_row(int n, char * af);
+
+double * get_column(int n, char * af);
+
+double get_elem(int m, int n, char * af);
+
 #endif

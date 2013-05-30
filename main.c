@@ -17,6 +17,10 @@ main(int argc, char ** argv)
 	wymiary_t wym_A;
 	wymiary_t wym_B;
 	
+	double * row_tmp;
+	double * column_tmp;
+	double elem_tmp;
+	
 	int i,tmp;
 	
 	if(argc < 6)
@@ -98,6 +102,7 @@ main(int argc, char ** argv)
 	
 	
 	/*wypisanie danych watkow*/
+	/*********************************************************************************
 	for(i=0;i<ile_watkow; i++)
 	{
 		printf("Watek %i:\npocz-> %i\ndlug-> %i\nid_op->%i\nmac1-> %s\nmac2-> %s\nrn_wyn-> %i\ncn_wyn-> %i\n-----------\n",
@@ -109,8 +114,27 @@ main(int argc, char ** argv)
 				dane_watkow[i].rn_wyn,
 				dane_watkow[i].cn_wyn);
 	}
+	*/
 	
-	 	
+	/*sprawdzenie i wypisanie funkcji pobierajacych kolumny*/
+	/**********************************************************************************/
+	row_tmp = get_row(5,argv[1]);
+	column_tmp = get_column(5,argv[1]);
+	
+	printf("Row: [");
+	for(i=0; i<mac_wyn.rn; i++)
+		printf("%lf, ",row_tmp[i]);
+	printf("]\n"); 	
+	 
+	printf("Column: [\n "); 
+	for(i=0; i<mac_wyn.cn; i++)
+		printf("%lf\n ",column_tmp[i]);
+	printf("]\n"); 	
+	
+	
+	elem_tmp = get_elem(2,5,argv[1]);
+	printf("Elem: %lf\n",elem_tmp);	
+	
 	/*finalization*/
 	fclose(f_wyn);
 	
