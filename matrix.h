@@ -22,6 +22,8 @@ typedef struct {
 	int id_operacji;
 	int rn_wyn;
 	int cn_wyn;
+	double ** mac_wyn_dot;
+	double * count_duration;
 } dane_watku_t; 
 
 
@@ -50,6 +52,16 @@ matrix_t dot_mt (matrix_t *a, matrix_t *b);
 
 void print (matrix_t a, FILE * p);
 
-wymiary_t read_wymiary (FILE * f);
+wymiary_t read_wymiary (char * file);
+
+double * get_row(int n, char * af);
+
+double * get_column(int n, char * af);
+
+double get_elem(int m, int n, char * af);
+
+void print_mat_wyn_dot(double** A, int rn, int cn);
+
+double mnoz_wec(double* A, double *B, int n);
 
 #endif
