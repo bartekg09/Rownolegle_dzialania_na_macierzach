@@ -1,0 +1,37 @@
+Autor programu: 
+Bartłomiej Gortych 
+nr indeksu: 238835
+bartlomiejgortych@gmail.com
+
+Uruchomienie: ./licz plik_macA plik_macB liczba_watkow
+
+Pliki macierzy są generowane w generatorze przez wywołanie:
+./gen l_wierszy l_kolumn min_wartość max_wartość nazwa_pliku
+
+
+Funkcjonalność:
+
+Program realizuje mnożenie macierzy pobieranych z swóch plików za posługując się zdefiniowaną
+przez użytkownika liczbą wątków.
+
+
+Program został zbudowany tak, aby wykorzystywać minimalna liczbę pamięci, co za tym idzie
+wykorzystuje skomplikowane działania na plikach wejściowych aby zminimalizować wielkość wczytanych
+z nich danych.
+
+Każdy wątek sam pobiera dane z pliku, wybierając tylko kolumny i wiersze potrzebne do policzenia
+zleconych mu elementów macierzy wynikowej. 
+
+Algorytm działa w taki sposób, że do każdego wątku wysyłana jest struktura z danymi odnośnie spodziewanej
+macierzy wynikowej, przydzielonego mu zakresu działań oraz nazwa plików, z którym ma pobrać niezbędne dane.
+Każdy wątek oblicza jakie są adresy komórek macierzy wynikowej, których ma obliczyć wynik, 
+tworzy tablicę indeksów wierszy i kolumn potrzebnych do obliczeń, redukuje powtarzające się,
+a następnie otwiera pliki wejściowe i pobiera wiersze i kolumny według zebranych indeksów.
+
+Następnie w każdym wątku dokonuje sie obliczenia, zapisując wyniki we współdzielonej przez wszystkie wątki
+w pamięci tablicy przeznaczonej na wyniki.
+
+
+Ze względu na już bardzo skomplikowane przetwarzania plików wejściowych program posłóży właśnie 
+do badania równoległych operacji na plikach w środowiskach: systemu Ubuntu Linux RT i Ubuntu Linux 
+oraz pomiarach obliczeń związanych z tymi działaniami (mnożenie dużych macierzy).
